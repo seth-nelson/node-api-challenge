@@ -2,11 +2,11 @@ const express = require('express');
 const server = express();
 
 const projectRoute = require('./router/projectRoute');
-// const actionRoute = require('./router/actionRoute');
+const actionRoute = require('./router/actionRoute');
 
 server.use(express.json());
-// server.use('/actions', actionRoute);
-server.use('/router', logger, projectRoute);
+server.use('/api/actions', actionRoute);
+server.use('/api/projects', projectRoute);
 
 server.get('/', (req, res) => {
     res.send(`<h1>API is up and running</h1>`);
