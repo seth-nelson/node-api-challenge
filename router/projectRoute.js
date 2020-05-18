@@ -40,13 +40,25 @@ router.post('/', (req, res) => {
 
 
 router.put('/:id', (req, res) => {
-    
+    const { id } = req.params;
+    const changes = req.body;
+    if (changes.name || changes.description) {
+        projectData.update(id, changes)
+            .then(updatedProject => res.status(200).json(updatedProject))
+            .catch(() => res.status(500).json({ message: 'The project information could not be modified.'}))
+    } else res.status(400).json({message: 'Please modify name or description to update'});
 })
 
 
 router.delete('/:id', (req, res) => {
-    
-})
+    const { id } = req.params
+    projectData.remove(id)
+    .then(deleted => {
+        if(deleted) res.status(200).json({ message: 'The project has been deleted.'})
+        else res.status(404).json({ message: 'The project with this id does not exist'})
+    })
+    .catch(() => res.status(500).json({ message: 'The project could not be deleted.'}))
+});
 
 
 module.exports = router;
