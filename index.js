@@ -14,8 +14,10 @@ Go code!
 */
 
 
-const server = require('express');
+const server = require('./server');
+
 const PORT = 4000
-server.listen(() => {
-    console.log(`Server listening on ${PORT}`);
+
+server.listen(PORT, () => {
+    console.log(`Server listening on localhost:${PORT}...`);
 })
