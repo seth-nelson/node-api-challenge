@@ -45,7 +45,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
     `Middleware allows you to insert certain functions into the server code in a particular order.`
 
 - [ ] Describe a Resource?
-    `A resource is `
+    `A resource is an object that defines one or more actions.`
 
 - [ ] What can the API return to help clients know if a request was successful?
     `A json message object with a proper error code is a good UI practice.`
